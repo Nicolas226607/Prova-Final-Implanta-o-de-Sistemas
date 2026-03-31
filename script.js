@@ -1,33 +1,47 @@
-// Conectar ao Supabase
-const SUPABASE_URL = 'https://bpntxpesbtdrelwsuzsu.supabase.co';
-const SUPABASE_KEY = 'Nicks2266@.';
+const SUPABASE_URL = 'SUA_URL';
+const SUPABASE_KEY = 'SUA_CHAVE';
 
-const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const { createClient } = window.supabase;
+const client = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// Evento do formulário
-document.getElementById('form').addEventListener('submit', async (e) => {
-  e.preventDefault();
+// Espera o HTML carregar (evita erro de null)
+document.addEventListener("DOMContentLoaded", () => {
 
-  const nome = document.getElementById('nome').value;
-  const celular = document.getElementById('celular').value;
-  const email = document.getElementById('email').value;
+  const form = document.getElementById("form");
 
-  // ✅ Validação (IMPORTANTE PRA NOTA)
-  if (!nome || !celular || !email) {
-    alert("Preencha todos os campos!");
-    return;
-  }
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  // Inserir no banco
-  const { data, error } = await client
-    .from('pacientes')
-    .insert([{ nome, celular, email }]);
+    const nome = document.getElementById('nome').value.trim();
+    const celular = document.getElementById('celular').value.trim();
+    const email = document.getElementById('email').value.trim();
 
-  if (error) {
-    alert("Erro ao cadastrar!");
-    console.error(error);
-  } else {
-    alert("Paciente cadastrado com sucesso!");
-    document.getElementById('form').reset();
-  }
+    // ✅ Validação
+    if (!nome || !celular || !email) {
+      alert("Preencha todos os campos!");
+      return;
+    }
+
+    try {
+      const { data, error } = await client
+        .from('Pacientes')
+        .insert([
+          { nome: nome, celular: celular, email: email }
+        ]);
+
+      if (error) {
+        console.error("Erro Supabase:", error);
+        alert("Erro: " + error.message);
+        return;
+      }
+
+      alert("Paciente cadastrado com sucesso!");
+      form.reset();
+
+    } catch (err) {
+      console.error("Erro geral:", err);
+      alert("Erro inesperado!");
+    }
+  });
+
 });
