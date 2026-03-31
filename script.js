@@ -1,5 +1,5 @@
 const SUPABASE_URL = 'https://bpntxpesbtdrelwsuzsu.supabase.co';
-const SUPABASE_KEY = 'Nicks2266@.';
+const SUPABASE_KEY = 'sb_publishable_shp85IEfzgCqGHVsLAvWhw_H0odwHmh';
 
 const { createClient } = window.supabase;
 const client = createClient(SUPABASE_URL, SUPABASE_KEY);
