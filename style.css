@@ -3,68 +3,79 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Fundo da página */
+/* Fundo com estilo dark moderno */
 body {
-  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  background: linear-gradient(135deg, #141e30, #243b55);
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Container */
+/* Container com efeito glass */
 .container {
-  background: #fff;
-  padding: 30px;
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  padding: 35px;
+  border-radius: 16px;
   width: 350px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
   text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Título */
 .container h2 {
   margin-bottom: 20px;
-  color: #333;
+  color: #ffffff;
+  letter-spacing: 1px;
 }
 
 /* Inputs */
 input {
   width: 100%;
   padding: 12px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 10px;
   outline: none;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
   transition: 0.3s;
 }
 
-/* Efeito ao clicar */
-input:focus {
-  border-color: #4facfe;
-  box-shadow: 0 0 5px rgba(79, 172, 254, 0.5);
+/* Placeholder */
+input::placeholder {
+  color: #ccc;
 }
 
-/* Botão */
+/* Efeito foco */
+input:focus {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 8px #00ffcc;
+}
+
+/* Botão estilizado */
 button {
   width: 100%;
   padding: 12px;
   margin-top: 15px;
-  background: #4facfe;
+  background: linear-gradient(135deg, #00ffcc, #7b2ff7);
   border: none;
-  border-radius: 8px;
-  color: #fff;
+  border-radius: 10px;
+  color: #000;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
 }
 
-/* Hover botão */
+/* Hover botão com glow */
 button:hover {
-  background: #00c6ff;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00ffcc;
 }
 
 /* Responsivo */
